@@ -1,0 +1,46 @@
+0.9.1 (9) 2010-6-29
+  - Fix resource not found error on Android 1.5 (API 3)
+
+0.9 (8) 2010-6-27
+  - Add unit: yard
+  - Change radio button image
+  - Set target API version to 8
+  - Show hint if number of items is less than two
+  - Check if the quantity is negative
+  - Show detail message to indicate which field has input error
+
+0.8 (7) 2010-5-3
+  - Bug fix: force close when there is an operator at the end of the value expression
+  - Bug fix: piece unit isn't set when application restore
+  - Bug fix: Quantity expression ends with dot is evaluated as zero
+  - Add support of length units 
+  - Click on an shopping item will directly go to edit page
+  - Disable items from comparison
+
+0.7 (6) 2010-3-20
+  - Group units into block on UI
+  - Fix the bug of switching unit type between weight and volume will lost selection
+  
+0.6 (5) 2010-3-17
+  - Add "each" unit type
+  - Change price field input keypad type
+  - Restore shopping items on restart the application
+
+0.5.1 (4) 2010-3-13
+  - Add log for tracing bug in SimpleMathEvaluator 
+
+0.5 (3) 2010-1-30
+  - Display currency symbol by locale
+  - Add help
+  - Change to light theme
+  
+0.4 (2) 2009-12-10
+  - Add CrashReporter
+  - Fix bug: incorrect price when edit item
+  - Add Flurry Analytics
+
+0.3  2009-12-5
+  - Minor update
+
+0.2  2009-11-17
+  - First runnable version
