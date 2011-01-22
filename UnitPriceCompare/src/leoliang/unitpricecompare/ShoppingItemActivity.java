@@ -3,11 +3,9 @@ package leoliang.unitpricecompare;
 import java.util.HashMap;
 import java.util.Map;
 
-import leoliang.android.lib.crashreport.CrashMonitor;
 import leoliang.android.widget.util.CompoundRadioGroup;
 import leoliang.unitpricecompare.model.Quantity;
 import leoliang.unitpricecompare.model.ShoppingItem;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,36 +16,54 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.flurry.android.FlurryAgent;
-
 /**
  * UI for input shopping item information.
  */
-public class ShoppingItemActivity extends Activity {
+public class ShoppingItemActivity extends BaseActivity {
 
     public static final String EXTRA_SHOPPING_ITEM = "shoppingItem";
     public static final String EXTRA_SHOPPING_ITEM_INDEX = "shoppingItemIndex";
-
-    private static final String LOG_TAG = "UnitPriceCompare";
 
     private ShoppingItem shoppingItem;
     private CompoundRadioGroup radioGroups = new CompoundRadioGroup();
     private Map<Integer, String> buttons;
 
-    @Override
-    public void onStart() {
-        Log.v(LOG_TAG, "onStart");
-        super.onStart();
-        CrashMonitor.monitor(this);
-        FlurryAgent.setCaptureUncaughtExceptions(false);
-        FlurryAgent.onStartSession(this, "5Q82B7WVG6DAIHNFF649");
+    private int getUnitButtonId(String unitName) {
+        for (int id : buttons.keySet()) {
+            if (buttons.get(id).equals(unitName)) {
+                return id;
+            }
+        }
+        Log.w(LOG_TAG, "getUnitButtonId(): Unknow unit: " + unitName);
+        return -1;
     }
 
-    @Override
-    public void onStop() {
-        Log.v(LOG_TAG, "onStop");
-        super.onStop();
-        FlurryAgent.onEndSession(this);
+    private String getUnitFromButtonId(int id) {
+        return buttons.get(id);
+    }
+
+    private void initializeUnitButtonMap() {
+        buttons = new HashMap<Integer, String>();
+
+        buttons.put(R.id.ItemDialog_Unit_mm, "mm");
+        buttons.put(R.id.ItemDialog_Unit_cm, "cm");
+        buttons.put(R.id.ItemDialog_Unit_m, "m");
+        buttons.put(R.id.ItemDialog_Unit_inch, "inch");
+        buttons.put(R.id.ItemDialog_Unit_ft, "ft");
+        buttons.put(R.id.ItemDialog_Unit_yd, "yd");
+
+        buttons.put(R.id.ItemDialog_Unit_g, "g");
+        buttons.put(R.id.ItemDialog_Unit_kg, "kg");
+        buttons.put(R.id.ItemDialog_Unit_oz, "oz");
+        buttons.put(R.id.ItemDialog_Unit_lb, "lb");
+
+        buttons.put(R.id.ItemDialog_Unit_ml, "ml");
+        buttons.put(R.id.ItemDialog_Unit_cl, "cl");
+        buttons.put(R.id.ItemDialog_Unit_l, "L");
+        buttons.put(R.id.ItemDialog_Unit_floz, "fl.oz");
+        buttons.put(R.id.ItemDialog_Unit_gal, "gal");
+
+        buttons.put(R.id.ItemDialog_Unit_none, "");
     }
 
     /** Called when the activity is first created. */
@@ -142,43 +158,5 @@ public class ShoppingItemActivity extends Activity {
         shoppingItem.setEnabled(true);
 
         return true;
-    }
-
-    private int getUnitButtonId(String unitName) {
-        for (int id : buttons.keySet()) {
-            if (buttons.get(id).equals(unitName)) {
-                return id;
-            }
-        }
-        Log.w(LOG_TAG, "getUnitButtonId(): Unknow unit: " + unitName);
-        return -1;
-    }
-
-    private String getUnitFromButtonId(int id) {
-        return buttons.get(id);
-    }
-
-    private void initializeUnitButtonMap() {
-        buttons = new HashMap<Integer, String>();
-
-        buttons.put(R.id.ItemDialog_Unit_mm, "mm");
-        buttons.put(R.id.ItemDialog_Unit_cm, "cm");
-        buttons.put(R.id.ItemDialog_Unit_m, "m");
-        buttons.put(R.id.ItemDialog_Unit_inch, "inch");
-        buttons.put(R.id.ItemDialog_Unit_ft, "ft");
-        buttons.put(R.id.ItemDialog_Unit_yd, "yd");
-
-        buttons.put(R.id.ItemDialog_Unit_g, "g");
-        buttons.put(R.id.ItemDialog_Unit_kg, "kg");
-        buttons.put(R.id.ItemDialog_Unit_oz, "oz");
-        buttons.put(R.id.ItemDialog_Unit_lb, "lb");
-
-        buttons.put(R.id.ItemDialog_Unit_ml, "ml");
-        buttons.put(R.id.ItemDialog_Unit_cl, "cl");
-        buttons.put(R.id.ItemDialog_Unit_l, "L");
-        buttons.put(R.id.ItemDialog_Unit_floz, "fl.oz");
-        buttons.put(R.id.ItemDialog_Unit_gal, "gal");
-
-        buttons.put(R.id.ItemDialog_Unit_none, "");
     }
 }
