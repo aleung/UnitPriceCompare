@@ -2,7 +2,9 @@ package leoliang.unitpricecompare;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import leoliang.unitpricecompare.model.PriceRanker;
 import leoliang.unitpricecompare.model.PriceRanker.UncomparableUnitException;
@@ -35,6 +37,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
+
 public class MainActivity extends BaseActivity {
 
     public class ItemList extends BaseAdapter {
@@ -56,11 +60,15 @@ public class MainActivity extends BaseActivity {
         }
 
         public void clear() {
+            Map<String, String> eventParameters = new HashMap<String, String>();
+            eventParameters.put("numberOfItems", String.valueOf(getCount()));
+            FlurryAgent.onEvent("allItemsCleared", eventParameters);
             items.clear();
             notifyItemUpdated();
         }
 
         public void deleteItem(int index) {
+            FlurryAgent.onEvent("itemDeleted");
             items.remove(index);
             notifyItemUpdated();
         }
@@ -144,9 +152,14 @@ public class MainActivity extends BaseActivity {
         }
 
         public void setItem(int index, ShoppingItem item) {
+            Map<String, String> eventParameters = new HashMap<String, String>();
+            eventParameters.put("unitOfItem", item.getQuantity().getUnitName());
+            eventParameters.put("numberOfItems", String.valueOf(getCount()));
             if (index < 0) {
+                FlurryAgent.onEvent("itemCreated", eventParameters);
                 items.add(item);
             } else {
+                FlurryAgent.onEvent("itemUpdated", eventParameters);
                 items.set(index, item);
             }
             notifyItemUpdated();
@@ -188,7 +201,6 @@ public class MainActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             ShoppingItem item = (ShoppingItem) data.getSerializableExtra(ShoppingItemActivity.EXTRA_SHOPPING_ITEM);
-
             switch (requestCode) {
             case ACTION_CREATE:
                 itemList.addItem(item);
@@ -229,7 +241,6 @@ public class MainActivity extends BaseActivity {
             public void onClick(@SuppressWarnings("unused") View view) {
                 Intent intent = new Intent(getApplicationContext(), ShoppingItemActivity.class);
                 startActivityForResult(intent, ACTION_CREATE);
-                // overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             }
 
         });
@@ -287,7 +298,6 @@ public class MainActivity extends BaseActivity {
         intent.putExtra(ShoppingItemActivity.EXTRA_SHOPPING_ITEM, shoppingItem);
         intent.putExtra(ShoppingItemActivity.EXTRA_SHOPPING_ITEM_INDEX, itemIndex);
         startActivityForResult(intent, ACTION_EDIT);
-        // overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 
     private void updateHint() {

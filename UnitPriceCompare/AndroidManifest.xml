@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="leoliang.unitpricecompare"
       android:versionCode="9"
-      android:versionName="0.9.1 (Added length unit: yard, various improvements, fix for Android 1.5)">
+      android:versionName="internal">
       
     <application 
         android:theme="@style/MyTheme" 
