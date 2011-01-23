@@ -47,12 +47,12 @@ public class MainActivity extends BaseActivity {
         private final LayoutInflater inflater;
         private List<ShoppingItem> items = new ArrayList<ShoppingItem>();
         private PriceRanker ranker = new PriceRanker();
-        private NumberFormat numberFormat;
+        private NumberFormat ratioNumberFormat;
 
         public ItemList(Context context) {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            numberFormat = NumberFormat.getPercentInstance();
-            numberFormat.setMaximumFractionDigits(0);
+            ratioNumberFormat = NumberFormat.getPercentInstance();
+            ratioNumberFormat.setMaximumFractionDigits(0);
         }
 
         public void addItem(ShoppingItem item) {
@@ -73,18 +73,22 @@ public class MainActivity extends BaseActivity {
             notifyItemUpdated();
         }
 
+        @Override
         public int getCount() {
             return items.size();
         }
 
+        @Override
         public Object getItem(int i) {
             return items.get(i);
         }
 
+        @Override
         public long getItemId(int i) {
             return i;
         }
 
+        @Override
         public View getView(final int i, View convertView, ViewGroup viewgroup) {
             final ShoppingItem item = items.get(i);
             View view = inflater.inflate(R.layout.item_view, null);
@@ -109,9 +113,11 @@ public class MainActivity extends BaseActivity {
                             rankView.setTextColor(Color.rgb(0, 153, 0)); // dark green
                         }
                     }
+                    String ratioText = format.format(item.getPricePerUnit()) + "/" + item.getQuantity().getUnitName();
                     if (rank > 1) {
-                        ratioView.setText("+" + numberFormat.format(ranker.getRatioToBestPrice(item) - 1));
+                        ratioText += " (+" + ratioNumberFormat.format(ranker.getRatioToBestPrice(item) - 1) + ")";
                     }
+                    ratioView.setText(ratioText);
                 } catch (UncomparableUnitException e) {
                     rankView.setText(R.string.uncomparable);
                     rankView.setTextColor(Color.RED);
@@ -122,7 +128,7 @@ public class MainActivity extends BaseActivity {
 
             enabledBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton button, boolean isChecked) {
+                public void onCheckedChanged(@SuppressWarnings("unused") CompoundButton button, boolean isChecked) {
                     item.setEnabled(isChecked);
                     notifyItemUpdated();
                 }
@@ -130,7 +136,7 @@ public class MainActivity extends BaseActivity {
 
             view.setOnClickListener(new OnClickListener() {
                 @Override
-                public void onClick(View paramView) {
+                public void onClick(@SuppressWarnings("unused") View paramView) {
                     startEditItemActivity(i);
                 }
             });
@@ -238,6 +244,7 @@ public class MainActivity extends BaseActivity {
 
         Button addButton = (Button) findViewById(R.id.AddItemButton);
         addButton.setOnClickListener(new OnClickListener() {
+            @Override
             public void onClick(@SuppressWarnings("unused") View view) {
                 Intent intent = new Intent(getApplicationContext(), ShoppingItemActivity.class);
                 startActivityForResult(intent, ACTION_CREATE);

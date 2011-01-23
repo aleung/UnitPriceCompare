@@ -21,24 +21,20 @@ public class ShoppingItem implements Serializable {
         quantity = new Quantity(jsonObject.getJSONObject("quantity"));
     }
 
-    public double getUnitPrice() {
-        return price / quantity.getQuantityInBasicUnit();
-    }
-
     public double getPrice() {
         return price;
+    }
+
+    public double getPricePerUnit() {
+        return price / quantity.getQuantity();
     }
 
     public Quantity getQuantity() {
         return quantity;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public double getPricePerBasicUnit() {
+        return price / quantity.getQuantityInBasicUnit();
     }
 
     public boolean isEnabled() {
@@ -47,6 +43,14 @@ public class ShoppingItem implements Serializable {
 
     public boolean isValid() {
         return ((price > 0) && quantity.isValid());
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public JSONObject toJson() throws JSONException {

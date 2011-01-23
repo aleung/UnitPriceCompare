@@ -11,11 +11,11 @@ import android.util.Log;
 
 public class Quantity implements Serializable {
 
-    private static final String LOG_TAG = "UnitPriceCompare";
-
     public enum UnitType {
         WEIGHT, VOLUME, NONE, LENGTH
     }
+
+    private static final String LOG_TAG = "UnitPriceCompare";
 
     private String expression;
     private String unit;
@@ -25,25 +25,18 @@ public class Quantity implements Serializable {
         // empty
     }
 
-    public Quantity(String valueExpression, String unit) throws ArithmeticException {
-        setValue(valueExpression);
-        setUnit(unit);
-    }
-
     public Quantity(JSONObject jsonObject) throws ArithmeticException, JSONException {
         setValue(jsonObject.getString("expression"));
         setUnit(jsonObject.getString("unit"));
     }
 
-    public void setValue(String valueExpression) throws ArithmeticException {
-        Log.d(LOG_TAG, "Set quantity value to:" + valueExpression);
-        expression = valueExpression;
-        double evalValue = SimpleMathEvaluator.eval(valueExpression);
-        if (evalValue > 0) {
-            value = evalValue;
-        } else {
-            throw new ArithmeticException("Result of the expression isn't positive.");
-        }
+    public Quantity(String valueExpression, String unit) throws ArithmeticException {
+        setValue(valueExpression);
+        setUnit(unit);
+    }
+
+    public double getQuantity() {
+        return value;
     }
 
     public double getQuantityInBasicUnit() {
@@ -86,6 +79,10 @@ public class Quantity implements Serializable {
         return value;
     }
 
+    public String getUnitName() {
+        return unit;
+    }
+
     public UnitType getUnitType() {
         if (unit.equals("")) {
             return UnitType.NONE;
@@ -100,13 +97,8 @@ public class Quantity implements Serializable {
         return UnitType.VOLUME;
     }
 
-    @Override
-    public String toString() {
-        return expression + " " + unit;
-    }
-
-    public JSONObject toJson() throws JSONException {
-        return new JSONObject().put("expression", expression).put("unit", unit);
+    public String getValueExpression() {
+        return expression;
     }
 
     public boolean isValid() {
@@ -114,15 +106,27 @@ public class Quantity implements Serializable {
         return false;
     }
 
-    public String getValueExpression() {
-        return expression;
-    }
-
-    public String getUnitName() {
-        return unit;
-    }
-
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public void setValue(String valueExpression) throws ArithmeticException {
+        Log.d(LOG_TAG, "Set quantity value to:" + valueExpression);
+        expression = valueExpression;
+        double evalValue = SimpleMathEvaluator.eval(valueExpression);
+        if (evalValue > 0) {
+            value = evalValue;
+        } else {
+            throw new ArithmeticException("Result of the expression isn't positive.");
+        }
+    }
+
+    public JSONObject toJson() throws JSONException {
+        return new JSONObject().put("expression", expression).put("unit", unit);
+    }
+
+    @Override
+    public String toString() {
+        return expression + " " + unit;
     }
 }
