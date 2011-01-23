@@ -21,7 +21,7 @@ public class PriceRanker {
         unitType = getMajorityUnitType(items);
         for (ShoppingItem item : items) {
             if (item.isEnabled() && item.getQuantity().getUnitType().equals(unitType)) {
-                double unitPrice = item.getUnitPrice();
+                double unitPrice = item.getPricePerBasicUnit();
                 if (!priceRank.contains(unitPrice)) {
                     priceRank.add(unitPrice);
                 }
@@ -55,10 +55,10 @@ public class PriceRanker {
         if (!item.getQuantity().getUnitType().equals(unitType)) {
             throw new UncomparableUnitException();
         }
-        return priceRank.indexOf(item.getUnitPrice()) + 1;
+        return priceRank.indexOf(item.getPricePerBasicUnit()) + 1;
     }
 
     public double getRatioToBestPrice(ShoppingItem item) {
-        return item.getUnitPrice() / priceRank.get(0);
+        return item.getPricePerBasicUnit() / priceRank.get(0);
     }
 }

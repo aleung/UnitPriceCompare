@@ -1,3 +1,9 @@
+0.10 (10) 2011-1-23
+  - Show price per unit (issue#2)
+  - Improve the list item layout
+  - Remove CrashReporter
+  - Add Flurry Analytics events report
+
 0.9.1 (9) 2010-6-29
   - Fix resource not found error on Android 1.5 (API 3)
 

@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal"
-    android:layout_width="fill_parent" android:layout_height="wrap_content">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:paddingRight="5dip">
 
-    <CheckBox android:id="@+id/enabled" android:layout_width="wrap_content" android:layout_height="fill_parent"
-        android:gravity="center_vertical"/>
+    <CheckBox android:id="@+id/enabled" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_centerVertical="true" android:paddingRight="10dip"/>
+        
+    <TextView android:id="@+id/price" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/enabled" 
+        android:text="$23.4" android:textSize="25sp" android:paddingRight="15sp"/>
+    <TextView android:id="@+id/age" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/price" android:layout_toLeftOf="@+id/ratio"
+        android:layout_alignBaseline="@+id/price"/>
+    <TextView android:id="@+id/ratio" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/rank" android:layout_alignBaseline="@+id/price"
+        android:textColor="#fff" android:background="#aaa" android:gravity="right" />
+    <TextView android:id="@+id/rank" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" android:layout_alignBaseline="@+id/price"
+        android:paddingLeft="10sp"
+        android:textSize="20sp" android:gravity="right" />
+        
+    <TextView android:id="@+id/quantity" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/enabled" android:layout_toLeftOf="@+id/unitPrice" android:layout_below="@id/price"
+        android:singleLine="true" android:fadingEdge="horizontal" android:text="250*12 ml" />
+    <TextView android:id="@+id/unitPrice" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_below="@id/price" android:layout_alignParentRight="true" 
+        android:gravity="right"/>
 
-    <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:padding="1mm"
-        android:stretchColumns="0">
+    <TextView android:id="@+id/tags" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/enabled" android:layout_below="@+id/quantity"/>
 
-        <TableRow>
-            <TextView android:id="@+id/price" android:text="23.4" android:textSize="25sp" />
-            <TextView android:id="@+id/rank" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:textSize="20sp" android:gravity="right" />
-        </TableRow>
-
-        <TableRow>
-            <TextView android:id="@+id/quantity" android:singleLine="true" android:fadingEdge="horizontal"
-                android:text="250 * 12 ml" />
-            <TextView android:id="@+id/ratio" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:gravity="right" />
-        </TableRow>
-
-    </TableLayout>
-
-</LinearLayout>
+</RelativeLayout>
