@@ -90,19 +90,21 @@ public class MainActivity extends BaseActivity {
 
         @Override
         public View getView(final int i, View convertView, ViewGroup viewgroup) {
-            final ShoppingItem item = items.get(i);
             View view = inflater.inflate(R.layout.item_view, null);
-
             TextView priceView = (TextView) view.findViewById(R.id.price);
+            TextView unitPriceView = (TextView) view.findViewById(R.id.unitPrice);
             TextView rankView = (TextView) view.findViewById(R.id.rank);
             TextView quantityView = (TextView) view.findViewById(R.id.quantity);
             TextView ratioView = (TextView) view.findViewById(R.id.ratio);
             CheckBox enabledBox = (CheckBox) view.findViewById(R.id.enabled);
 
+            final ShoppingItem item = items.get(i);
+
             NumberFormat format = NumberFormat.getCurrencyInstance();
             priceView.setText(format.format(item.getPrice()));
             quantityView.setText(item.getQuantity().toString());
             enabledBox.setChecked(item.isEnabled());
+            unitPriceView.setText(format.format(item.getPricePerUnit()) + "/" + item.getQuantity().getUnitName());
 
             if (item.isEnabled()) {
                 try {
@@ -113,11 +115,9 @@ public class MainActivity extends BaseActivity {
                             rankView.setTextColor(Color.rgb(0, 153, 0)); // dark green
                         }
                     }
-                    String ratioText = format.format(item.getPricePerUnit()) + "/" + item.getQuantity().getUnitName();
                     if (rank > 1) {
-                        ratioText += " (+" + ratioNumberFormat.format(ranker.getRatioToBestPrice(item) - 1) + ")";
+                        ratioView.setText(" +" + ratioNumberFormat.format(ranker.getRatioToBestPrice(item) - 1) + " ");
                     }
-                    ratioView.setText(ratioText);
                 } catch (UncomparableUnitException e) {
                     rankView.setText(R.string.uncomparable);
                     rankView.setTextColor(Color.RED);
