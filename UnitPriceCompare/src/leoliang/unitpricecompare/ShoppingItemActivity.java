@@ -6,6 +6,7 @@ import java.util.Map;
 import leoliang.android.widget.util.CompoundRadioGroup;
 import leoliang.unitpricecompare.model.Quantity;
 import leoliang.unitpricecompare.model.ShoppingItem;
+import leoliang.util.Analytics;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.flurry.android.FlurryAgent;
 
 /**
  * UI for input shopping item information.
@@ -126,7 +126,7 @@ public class ShoppingItemActivity extends BaseActivity {
 
         Map<String, String> eventParameters = new HashMap<String, String>();
         eventParameters.put("screenOrientation", String.valueOf(getResources().getConfiguration().orientation));
-        FlurryAgent.onEvent("openShoppingItemActivity", eventParameters);
+        Analytics.onEvent("openShoppingItemActivity", eventParameters);
     }
 
     /**

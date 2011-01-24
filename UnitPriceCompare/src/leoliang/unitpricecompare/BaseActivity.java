@@ -1,8 +1,7 @@
 package leoliang.unitpricecompare;
 
+import leoliang.util.Analytics;
 import android.app.Activity;
-
-import com.flurry.android.FlurryAgent;
 
 public class BaseActivity extends Activity {
 
@@ -11,13 +10,13 @@ public class BaseActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
-        FlurryAgent.onStartSession(this, "5Q82B7WVG6DAIHNFF649");
+        Analytics.onStartSession(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        FlurryAgent.onEndSession(this);
+        Analytics.onEndSession(this);
     }
 
 }

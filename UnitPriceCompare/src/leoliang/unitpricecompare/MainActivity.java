@@ -9,6 +9,7 @@ import java.util.Map;
 import leoliang.unitpricecompare.model.PriceRanker;
 import leoliang.unitpricecompare.model.PriceRanker.UncomparableUnitException;
 import leoliang.unitpricecompare.model.ShoppingItem;
+import leoliang.util.Analytics;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,13 +63,13 @@ public class MainActivity extends BaseActivity {
         public void clear() {
             Map<String, String> eventParameters = new HashMap<String, String>();
             eventParameters.put("numberOfItems", String.valueOf(getCount()));
-            FlurryAgent.onEvent("allItemsCleared", eventParameters);
+            Analytics.onEvent("allItemsCleared", eventParameters);
             items.clear();
             notifyItemUpdated();
         }
 
         public void deleteItem(int index) {
-            FlurryAgent.onEvent("itemDeleted");
+            Analytics.onEvent("itemDeleted");
             items.remove(index);
             notifyItemUpdated();
         }
