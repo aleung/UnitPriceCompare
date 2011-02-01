@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="Widget.CompoundButton.RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/btn_radio</item>
+    <style name="Widget.CompoundButton.RadioButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/radio_image</item>
+        <item name="android:textColor">@drawable/radio_textcolor</item>
     </style>    
+     
+    <style name="RadioGroup">
+        <item name="android:background">#bfbfbf</item>
+        <item name="android:paddingLeft">5dip</item>
+        <item name="android:paddingRight">5dip</item>
+        <item name="android:paddingTop">5dip</item>
+    </style>
 </resources>
 

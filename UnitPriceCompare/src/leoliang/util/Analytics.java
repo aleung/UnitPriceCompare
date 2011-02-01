@@ -24,6 +24,9 @@ public class Analytics {
         if (!isNewUser) {
             return false;
         }
+        if (context == null) {
+            return false;
+        }
         SharedPreferences sharedPreferences = context.getSharedPreferences("Analytics", Context.MODE_PRIVATE);
         if (sharedPreferences.contains(FIRST_USE_TIMESTAMP)) {
             if (System.currentTimeMillis() - sharedPreferences.getLong(FIRST_USE_TIMESTAMP, 0) > 3600 * 24) {
