@@ -1,99 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/ItemDialog"
-    android:orientation="vertical" android:padding="3px" android:layout_width="fill_parent" android:layout_height="fill_parent">
 
-    <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:stretchColumns="1">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
 
-        <TableRow>
-            <TextView android:layout_height="wrap_content" android:text="@string/price" />
-            <EditText android:id="@+id/ItemDialog_PriceField" android:layout_height="wrap_content"
-                android:hint="@string/item_price_hint" android:inputType="text|numberDecimal" />
-        </TableRow>
+    <TabHost android:id="@+id/TabHost" android:layout_width="fill_parent" android:layout_height="wrap_content">
 
-        <TableRow>
-            <TextView android:layout_height="wrap_content" android:text="@string/quantity" />
-            <EditText android:id="@+id/ItemDialog_QuantityField" android:layout_height="wrap_content"
-                android:hint="@string/item_quantity_hint" android:inputType="text|numberDecimal" />
-        </TableRow>
-    </TableLayout>
+        <LinearLayout android:orientation="vertical" 
+                      android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:paddingTop="5dip">    
 
-    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/unit" />
+            <TabWidget android:id="@android:id/tabs" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
 
-    <RadioGroup android:id="@+id/ItemDialog_Unit_notAvailable" android:orientation="horizontal"
-        android:layout_width="fill_parent" android:layout_height="wrap_content"
-        style="@style/RadioGroup">
+            <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@+id/tabContent_price" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/price" />
+                <TextView android:id="@+id/tabContent_quantity" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/quantity" />
 
-        <RadioButton android:id="@+id/ItemDialog_Unit_none"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="@string/each_unit" />
+                <!-- Unit tab content -->
+                <LinearLayout android:id="@+id/tabContent_unit"
+                    android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            
+                    <RadioGroup android:id="@+id/ItemDialog_Unit_notAvailable" android:orientation="horizontal"
+                                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                style="@style/RadioGroup">
+                        <RadioButton android:id="@+id/ItemDialog_Unit_none"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="@string/each_unit" />
+                    </RadioGroup>
+                
+                    <RadioGroup android:id="@+id/ItemDialog_Unit_weight" android:orientation="horizontal"
+                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        style="@style/RadioGroup">
+                        <RadioButton android:id="@+id/ItemDialog_Unit_g" 
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="g" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_kg"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="kg" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_oz"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="oz" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_lb"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="lb" />
+                    </RadioGroup>
+                
+                    <RadioGroup android:id="@+id/ItemDialog_Unit_volume" android:orientation="horizontal"
+                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        style="@style/RadioGroup">
+                        <RadioButton android:id="@+id/ItemDialog_Unit_ml"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="ml" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_cl"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="cl" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_l"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="L" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_floz"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="fl.oz" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_gal"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="gal" />
+                    </RadioGroup>
+                
+                    <RadioGroup android:id="@+id/ItemDialog_Unit_length" android:orientation="horizontal"
+                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        style="@style/RadioGroup" android:paddingBottom="5dip">
+                        <RadioButton android:id="@+id/ItemDialog_Unit_mm"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="mm" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_cm"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="cm" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_m"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="m" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_inch"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="inch" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_ft"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="ft" />
+                        <RadioButton android:id="@+id/ItemDialog_Unit_yd"
+                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:text="yd" />
+                    </RadioGroup>
+                
+                </LinearLayout>
 
-    </RadioGroup>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 
-    <RadioGroup android:id="@+id/ItemDialog_Unit_weight" android:orientation="horizontal"
-        android:layout_width="fill_parent" android:layout_height="wrap_content"
-        style="@style/RadioGroup">
-
-        <RadioButton android:id="@+id/ItemDialog_Unit_g" 
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="g" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_kg"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="kg" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_oz"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="oz" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_lb"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="lb" />
-    </RadioGroup>
-
-    <RadioGroup android:id="@+id/ItemDialog_Unit_volume" android:orientation="horizontal"
-        android:layout_width="fill_parent" android:layout_height="wrap_content"
-        style="@style/RadioGroup">
-
-        <RadioButton android:id="@+id/ItemDialog_Unit_ml"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="ml" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_cl"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="cl" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_l"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="L" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_floz"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="fl.oz" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_gal"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="gal" />
-
-    </RadioGroup>
-
-    <RadioGroup android:id="@+id/ItemDialog_Unit_length" android:orientation="horizontal"
-        android:layout_width="fill_parent" android:layout_height="wrap_content"
-        style="@style/RadioGroup" android:paddingBottom="5dip">
-
-        <RadioButton android:id="@+id/ItemDialog_Unit_mm"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="mm" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_cm"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="cm" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_m"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="m" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_inch"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="inch" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_ft"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="ft" />
-        <RadioButton android:id="@+id/ItemDialog_Unit_yd"
-            android:layout_width="45dip" android:layout_height="wrap_content"
-            android:text="yd" />
-
-    </RadioGroup>
 
     <LinearLayout android:orientation="horizontal" 
         android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -106,4 +105,5 @@
             android:layout_weight="1" android:text="@android:string/cancel" />
 
     </LinearLayout>
+    
 </LinearLayout>

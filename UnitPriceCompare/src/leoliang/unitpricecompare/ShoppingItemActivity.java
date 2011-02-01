@@ -7,16 +7,21 @@ import leoliang.android.widget.util.CompoundRadioGroup;
 import leoliang.unitpricecompare.model.Quantity;
 import leoliang.unitpricecompare.model.ShoppingItem;
 import leoliang.util.Analytics;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 /**
  * UI for input shopping item information.
@@ -78,6 +83,32 @@ public class ShoppingItemActivity extends BaseActivity {
         // init UI components
 
         setContentView(R.layout.item);
+
+        // TODO: test code for tabs
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        TabHost tabs = (TabHost) findViewById(R.id.TabHost);
+        tabs.setup();
+
+        TabSpec tabSpecPrice = tabs.newTabSpec("price");
+        View tabIndicatorPrice = inflater.inflate(R.layout.price_tab, null);
+        tabIndicatorPrice.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 3.0f));
+        tabSpecPrice.setIndicator(tabIndicatorPrice);
+        tabSpecPrice.setContent(R.id.tabContent_price);
+        tabs.addTab(tabSpecPrice);
+
+        TabSpec tabSpecQuantity = tabs.newTabSpec("quantity");
+        View tabIndicatorQuantity = inflater.inflate(R.layout.quantity_tab, null);
+        tabIndicatorQuantity.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 5.0f));
+        tabSpecQuantity.setIndicator(tabIndicatorQuantity);
+        tabSpecQuantity.setContent(R.id.tabContent_quantity);
+        tabs.addTab(tabSpecQuantity);
+
+        TabSpec tabSpecUnit = tabs.newTabSpec("unit");
+        View tabIndicatorUnit = inflater.inflate(R.layout.unit_tab, null);
+        tabIndicatorUnit.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 2.0f));
+        tabSpecUnit.setIndicator(tabIndicatorUnit);
+        tabSpecUnit.setContent(R.id.tabContent_unit);
+        tabs.addTab(tabSpecUnit);
 
         final Button okButton = (Button) findViewById(R.id.ItemDialog_ok);
         okButton.setOnClickListener(new OnClickListener() {

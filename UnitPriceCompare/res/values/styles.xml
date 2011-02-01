@@ -11,5 +11,13 @@
         <item name="android:paddingRight">5dip</item>
         <item name="android:paddingTop">5dip</item>
     </style>
+    
+    <style name="ItemEditTabIndicator">
+        <item name="android:paddingLeft">3dip</item>
+        <item name="android:paddingRight">7dip</item>
+        <item name="android:paddingTop">3dip</item>
+        <item name="android:paddingBottom">3dip</item>
+        <item name="android:background">@drawable/tab_indicator</item>
+    </style>
 </resources>
 
