@@ -132,6 +132,11 @@ public class MainActivity extends BaseActivity {
                 public void onCheckedChanged(@SuppressWarnings("unused") CompoundButton button, boolean isChecked) {
                     item.setEnabled(isChecked);
                     notifyItemUpdated();
+                    if (isChecked) {
+                        Analytics.onEvent("itemEnabled");
+                    } else {
+                        Analytics.onEvent("itemDisabled");
+                    }
                 }
             });
 
