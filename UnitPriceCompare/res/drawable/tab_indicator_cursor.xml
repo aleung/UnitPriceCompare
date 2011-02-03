@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- TODO: android:state_focused, android:state_pressed -->
+    <item android:state_selected="false" android:drawable="@drawable/cursor_deactive" />
+    <item android:state_selected="true" android:drawable="@drawable/cursor_active" />
+</selector>

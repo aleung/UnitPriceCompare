@@ -7,11 +7,15 @@
 
         <LinearLayout android:orientation="vertical" 
                       android:layout_width="fill_parent" android:layout_height="wrap_content"
-                      android:paddingTop="5dip">    
+                      >    
 
-            <TabWidget android:id="@android:id/tabs" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+            <TabWidget android:id="@android:id/tabs" 
+                       android:layout_width="fill_parent" android:layout_height="wrap_content"
+                       android:background="@color/panel_background"/>
 
-            <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <FrameLayout android:id="@android:id/tabcontent" 
+                         android:layout_width="fill_parent" android:layout_height="wrap_content"
+                         android:background="@drawable/tile_background_grey_525252">
                 <TextView android:id="@+id/tabContent_price" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/price" />
                 <TextView android:id="@+id/tabContent_quantity" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/quantity" />
 

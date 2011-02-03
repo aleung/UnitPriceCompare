@@ -4,10 +4,8 @@
               style="@style/ItemEditTabIndicator">
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
               style="@style/ItemEditTabLabel"
-              android:text="@string/quantity" />
-    <TextView android:id="@+id/ItemDialog_QuantityField" 
+              android:text="@string/price" />
+    <EditText android:id="@+id/ItemDialog_PriceField" 
               android:layout_height="wrap_content" android:layout_width="match_parent"
-              android:singleLine="true"
-              android:hint="@string/item_quantity_hint" 
-              style="@style/Widget.EditText" />
+              android:hint="@string/item_price_hint" android:inputType="text|numberDecimal" />
 </LinearLayout>
