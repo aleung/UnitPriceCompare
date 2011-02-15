@@ -15,9 +15,14 @@
 
             <FrameLayout android:id="@android:id/tabcontent" 
                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                         android:padding="10dip"
                          android:background="@drawable/tile_background_grey_525252">
-                <TextView android:id="@+id/tabContent_price" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/price" />
-                <TextView android:id="@+id/tabContent_quantity" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/quantity" />
+                
+                <leoliang.android.widget.DigitKeyboard android:id="@+id/tabContent_price" 
+                               android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                
+                <leoliang.android.widget.DigitKeyboard android:id="@+id/tabContent_quantity"
+                               android:layout_width="fill_parent" android:layout_height="wrap_content" />
 
                 <!-- Unit tab content -->
                 <LinearLayout android:id="@+id/tabContent_unit"
