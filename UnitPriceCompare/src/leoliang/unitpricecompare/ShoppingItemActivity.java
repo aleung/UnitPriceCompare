@@ -3,7 +3,7 @@ package leoliang.unitpricecompare;
 import java.util.HashMap;
 import java.util.Map;
 
-import leoliang.android.widget.util.CompoundRadioGroup;
+import leoliang.android.widget.CompoundRadioGroup;
 import leoliang.unitpricecompare.model.Quantity;
 import leoliang.unitpricecompare.model.ShoppingItem;
 import leoliang.util.Analytics;
@@ -17,7 +17,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -31,8 +30,13 @@ public class ShoppingItemActivity extends BaseActivity {
     public static final String EXTRA_SHOPPING_ITEM = "shoppingItem";
     public static final String EXTRA_SHOPPING_ITEM_INDEX = "shoppingItemIndex";
 
+    private static final String TAB_UNIT = "unit";
+    private static final String TAB_QUANTITY = "quantity";
+    private static final String TAB_PRICE = "price";
+
     private ShoppingItem shoppingItem;
-    private CompoundRadioGroup radioGroups = new CompoundRadioGroup();
+    private CompoundRadioGroup radioGroups;
+    private TabHost tabs;
     private Map<Integer, String> buttons;
 
     private int getUnitButtonId(String unitName) {
@@ -84,26 +88,25 @@ public class ShoppingItemActivity extends BaseActivity {
 
         setContentView(R.layout.item);
 
-        // TODO: test code for tabs
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TabHost tabs = (TabHost) findViewById(R.id.TabHost);
+        tabs = (TabHost) findViewById(R.id.TabHost);
         tabs.setup();
 
-        TabSpec tabSpecPrice = tabs.newTabSpec("price");
+        TabSpec tabSpecPrice = tabs.newTabSpec(TAB_PRICE);
         View tabIndicatorPrice = inflater.inflate(R.layout.price_tab, null);
         tabIndicatorPrice.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 3.0f));
         tabSpecPrice.setIndicator(tabIndicatorPrice);
         tabSpecPrice.setContent(R.id.tabContent_price);
         tabs.addTab(tabSpecPrice);
 
-        TabSpec tabSpecQuantity = tabs.newTabSpec("quantity");
+        TabSpec tabSpecQuantity = tabs.newTabSpec(TAB_QUANTITY);
         View tabIndicatorQuantity = inflater.inflate(R.layout.quantity_tab, null);
         tabIndicatorQuantity.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 5.0f));
         tabSpecQuantity.setIndicator(tabIndicatorQuantity);
         tabSpecQuantity.setContent(R.id.tabContent_quantity);
         tabs.addTab(tabSpecQuantity);
 
-        TabSpec tabSpecUnit = tabs.newTabSpec("unit");
+        TabSpec tabSpecUnit = tabs.newTabSpec(TAB_UNIT);
         View tabIndicatorUnit = inflater.inflate(R.layout.unit_tab, null);
         tabIndicatorUnit.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 2.0f));
         tabSpecUnit.setIndicator(tabIndicatorUnit);
@@ -112,6 +115,7 @@ public class ShoppingItemActivity extends BaseActivity {
 
         final Button okButton = (Button) findViewById(R.id.ItemDialog_ok);
         okButton.setOnClickListener(new OnClickListener() {
+            @Override
             public void onClick(@SuppressWarnings("unused") View view) {
                 if (updateShoppingItem()) {
                     Intent intent = getIntent();
@@ -123,6 +127,7 @@ public class ShoppingItemActivity extends BaseActivity {
         });
         Button cancelButton = (Button) findViewById(R.id.ItemDialog_cancel);
         cancelButton.setOnClickListener(new OnClickListener() {
+            @Override
             public void onClick(@SuppressWarnings("unused") View view) {
                 ShoppingItemActivity.this.setResult(RESULT_CANCELED);
                 ShoppingItemActivity.this.finish();
@@ -131,15 +136,7 @@ public class ShoppingItemActivity extends BaseActivity {
 
         final TextView priceField = (TextView) findViewById(R.id.ItemDialog_PriceField);
         final TextView quantityField = (TextView) findViewById(R.id.ItemDialog_QuantityField);
-        final RadioGroup noUnitGroup = (RadioGroup) findViewById(R.id.ItemDialog_Unit_notAvailable);
-        final RadioGroup volumeGroup = (RadioGroup) findViewById(R.id.ItemDialog_Unit_volume);
-        final RadioGroup weightGroup = (RadioGroup) findViewById(R.id.ItemDialog_Unit_weight);
-        final RadioGroup lengthGroup = (RadioGroup) findViewById(R.id.ItemDialog_Unit_length);
-
-        radioGroups.add(weightGroup);
-        radioGroups.add(volumeGroup);
-        radioGroups.add(noUnitGroup);
-        radioGroups.add(lengthGroup);
+        radioGroups = (CompoundRadioGroup) findViewById(R.id.tabContent_unit);
 
         // init values
 
@@ -170,7 +167,7 @@ public class ShoppingItemActivity extends BaseActivity {
         try {
             shoppingItem.setPrice(Double.parseDouble(price));
         } catch (NumberFormatException e) {
-            priceField.requestFocus();
+            tabs.setCurrentTabByTag(TAB_PRICE);
             Toast.makeText(getApplicationContext(), R.string.invalid_input_price, Toast.LENGTH_LONG).show();
             return false;
         }
@@ -179,7 +176,7 @@ public class ShoppingItemActivity extends BaseActivity {
         try {
             shoppingItem.getQuantity().setValue(quantityField.getText().toString());
         } catch (ArithmeticException e) {
-            quantityField.requestFocus();
+            tabs.setCurrentTabByTag(TAB_QUANTITY);
             Toast.makeText(getApplicationContext(), R.string.invalid_input_quantity, Toast.LENGTH_LONG).show();
             return false;
         }
@@ -188,6 +185,7 @@ public class ShoppingItemActivity extends BaseActivity {
         String unit = getUnitFromButtonId(checkedRadioButtonId);
         if (unit == null) {
             Log.w(LOG_TAG, "updateShoppingItem(): Unknown button ID: " + checkedRadioButtonId);
+            tabs.setCurrentTabByTag(TAB_UNIT);
             Toast.makeText(getApplicationContext(), R.string.invalid_input_unit, Toast.LENGTH_LONG).show();
             return false;
         }

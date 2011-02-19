@@ -4,19 +4,25 @@
     <style name="Widget.CompoundButton.RadioButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/radio_image</item>
         <item name="android:textColor">@drawable/radio_textcolor</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowColor">#fff</item>
+        <item name="android:shadowRadius">1.5</item>
     </style>    
      
     <style name="RadioGroup">
         <item name="android:paddingLeft">5dip</item>
         <item name="android:paddingRight">5dip</item>
-        <item name="android:paddingTop">5dip</item>
+        <item name="android:paddingTop">8dip</item>
     </style>
     
     <style name="ItemEditTabIndicator">
         <item name="android:paddingLeft">3dip</item>
         <item name="android:paddingRight">3dip</item>
         <item name="android:paddingTop">3dip</item>
-        <item name="android:paddingBottom">7dip</item>
+        <item name="android:paddingBottom">10dip</item>
         <item name="android:background">@drawable/tab_indicator_cursor</item>
     </style>
     

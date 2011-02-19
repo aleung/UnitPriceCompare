@@ -5,57 +5,57 @@
     <!-- line 1 -->
     <LinearLayout android:orientation="horizontal" 
             android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@+id/keyboard_7" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_7" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="7" />
-        <Button android:id="@+id/keyboard_8" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_8" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="8" />
-        <Button android:id="@+id/keyboard_9" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_9" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="9" />
-        <Button android:id="@+id/keyboard_left_parenthesis" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_left_parenthesis" style="@style/Widget.Button.Keyboard"
                 android:text="(" />
-        <Button android:id="@+id/keyboard_right_parenthesis" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_right_parenthesis" style="@style/Widget.Button.Keyboard"
                 android:text=")" />
     </LinearLayout>
     <!-- line 2 -->
     <LinearLayout android:orientation="horizontal" 
             android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@+id/keyboard_4" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_4" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="4" />
-        <Button android:id="@+id/keyboard_5" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_5" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="5" />
-        <Button android:id="@+id/keyboard_6" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_6" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="6" />
-        <Button android:id="@+id/keyboard_multiply" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_multiply" style="@style/Widget.Button.Keyboard"
                 android:text="*" />
-        <Button android:id="@+id/keyboard_division" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_division" style="@style/Widget.Button.Keyboard"
                 android:text="" />
     </LinearLayout>
     <!-- line 3 -->
     <LinearLayout android:orientation="horizontal" 
             android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@+id/keyboard_1" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_1" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="1" />
-        <Button android:id="@+id/keyboard_2" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_2" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="2" />
-        <Button android:id="@+id/keyboard_3" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_3" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="3" />
-        <Button android:id="@+id/keyboard_plus" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_plus" style="@style/Widget.Button.Keyboard"
                 android:text="+" />
-        <Button android:id="@+id/keyboard_minus" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_minus" style="@style/Widget.Button.Keyboard"
                 android:text="-" />
     </LinearLayout>
     <!-- line 4 -->
     <LinearLayout android:orientation="horizontal" 
             android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@+id/keyboard_0" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_0" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="0" />
-        <Button android:id="@+id/keyboard_00" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_00" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="00" />
-        <Button android:id="@+id/keyboard_point" style="@style/Widget.Button.Keyboard.Digit"
+        <Button android:id="@+id/key_point" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="." />
-        <Button android:id="@+id/keyboard_reserved" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_reserved" style="@style/Widget.Button.Keyboard"
                 android:text="" />
-        <Button android:id="@+id/keyboard_back" style="@style/Widget.Button.Keyboard"
+        <Button android:id="@+id/key_back" style="@style/Widget.Button.Keyboard"
                 android:text="C" />
     </LinearLayout>
 </LinearLayout>

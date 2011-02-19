@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+              xmlns:app="http://schemas.android.com/apk/res/leoliang.unitpricecompare"
+              android:orientation="vertical" 
+              android:layout_width="fill_parent" android:layout_height="fill_parent">
 
     <TabHost android:id="@+id/TabHost" android:layout_width="fill_parent" android:layout_height="wrap_content">
 
@@ -11,6 +13,7 @@
 
             <TabWidget android:id="@android:id/tabs" 
                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                       android:paddingTop="8dip"
                        android:background="@color/panel_background"/>
 
             <FrameLayout android:id="@android:id/tabcontent" 
@@ -19,20 +22,24 @@
                          android:background="@drawable/tile_background_grey_525252">
                 
                 <leoliang.android.widget.DigitKeyboard android:id="@+id/tabContent_price" 
-                               android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                               android:layout_width="fill_parent" android:layout_height="wrap_content" 
+                               app:inputField="@+id/ItemDialog_PriceField" />
                 
                 <leoliang.android.widget.DigitKeyboard android:id="@+id/tabContent_quantity"
-                               android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                               android:layout_width="fill_parent" android:layout_height="wrap_content"
+                               app:inputField="@+id/ItemDialog_QuantityField" />
 
                 <!-- Unit tab content -->
-                <LinearLayout android:id="@+id/tabContent_unit"
-                    android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <leoliang.android.widget.CompoundRadioGroup android:id="@+id/tabContent_unit"
+                    android:orientation="vertical" 
+                    android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    app:inputField="@+id/ItemDialog_UnitField">
             
                     <RadioGroup android:id="@+id/ItemDialog_Unit_notAvailable" android:orientation="horizontal"
                                 android:layout_width="fill_parent" android:layout_height="wrap_content"
                                 style="@style/RadioGroup">
                         <RadioButton android:id="@+id/ItemDialog_Unit_none"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="@string/each_unit" />
                     </RadioGroup>
                 
@@ -40,16 +47,16 @@
                         android:layout_width="fill_parent" android:layout_height="wrap_content"
                         style="@style/RadioGroup">
                         <RadioButton android:id="@+id/ItemDialog_Unit_g" 
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="g" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_kg"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="kg" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_oz"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="oz" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_lb"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="lb" />
                     </RadioGroup>
                 
@@ -57,46 +64,46 @@
                         android:layout_width="fill_parent" android:layout_height="wrap_content"
                         style="@style/RadioGroup">
                         <RadioButton android:id="@+id/ItemDialog_Unit_ml"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="ml" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_cl"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="cl" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_l"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="L" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_floz"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="fl.oz" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_gal"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="gal" />
                     </RadioGroup>
                 
                     <RadioGroup android:id="@+id/ItemDialog_Unit_length" android:orientation="horizontal"
                         android:layout_width="fill_parent" android:layout_height="wrap_content"
-                        style="@style/RadioGroup" android:paddingBottom="5dip">
+                        style="@style/RadioGroup" android:paddingBottom="8dip">
                         <RadioButton android:id="@+id/ItemDialog_Unit_mm"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="mm" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_cm"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="cm" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_m"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="m" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_inch"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="inch" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_ft"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="ft" />
                         <RadioButton android:id="@+id/ItemDialog_Unit_yd"
-                            android:layout_width="45dip" android:layout_height="wrap_content"
+                            android:layout_width="48dip" android:layout_height="42dip"
                             android:text="yd" />
                     </RadioGroup>
                 
-                </LinearLayout>
+                </leoliang.android.widget.CompoundRadioGroup>
 
             </FrameLayout>
         </LinearLayout>
@@ -105,7 +112,7 @@
 
     <LinearLayout android:orientation="horizontal" 
         android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:padding="5dip">
+        android:paddingTop="10dip" android:paddingLeft="5dip" android:paddingRight="5dip">
 
         <Button android:id="@+id/ItemDialog_ok" android:layout_height="wrap_content" android:layout_width="0dip"
             android:layout_weight="1" android:text="@android:string/ok" />
