@@ -55,7 +55,7 @@
                 android:text="." />
         <Button android:id="@+id/key_reserved" style="@style/Widget.Button.Keyboard"
                 android:text="" />
-        <Button android:id="@+id/key_back" style="@style/Widget.Button.Keyboard"
-                android:text="C" />
+        <ImageButton android:id="@+id/key_back" style="@style/Widget.Button.Keyboard"
+                android:src="@drawable/sym_keyboard_delete" />
     </LinearLayout>
 </LinearLayout>

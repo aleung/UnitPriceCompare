@@ -23,6 +23,7 @@
                 
                 <leoliang.android.widget.DigitKeyboard android:id="@+id/tabContent_price" 
                                android:layout_width="fill_parent" android:layout_height="wrap_content" 
+                               app:digitOnly="true"
                                app:inputField="@+id/ItemDialog_PriceField" />
                 
                 <leoliang.android.widget.DigitKeyboard android:id="@+id/tabContent_quantity"

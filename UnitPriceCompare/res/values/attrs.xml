@@ -3,4 +3,7 @@
     <declare-styleable name="CustomInput">
         <attr name="inputField" format="reference" />
     </declare-styleable>
+    <declare-styleable name="DigitKeyboard">
+        <attr name="digitOnly" format="boolean" />
+    </declare-styleable>
 </resources>

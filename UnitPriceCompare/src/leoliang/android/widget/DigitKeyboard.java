@@ -12,10 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DigitKeyboard extends LinearLayout {
+
+    private int[] nonDigitKeys = new int[] { R.id.key_division, R.id.key_multiply, R.id.key_plus, R.id.key_minus,
+            R.id.key_left_parenthesis, R.id.key_right_parenthesis };
 
     public DigitKeyboard(Context context) {
         this(context, null);
@@ -31,9 +35,31 @@ public class DigitKeyboard extends LinearLayout {
         final int inputFieldId = a.getResourceId(R.styleable.CustomInput_inputField, -1);
         final Activity activity = (Activity) context;
 
+        a = context.obtainStyledAttributes(attrs, R.styleable.DigitKeyboard);
+        final boolean digitOnly = a.getBoolean(R.styleable.DigitKeyboard_digitOnly, false);
+
         Collection<View> children = getLeafChildrenView(this);
         for (final View child : children) {
+            if (child instanceof ImageButton) {
+                if (child.getId() == R.id.key_back) {
+                    child.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(@SuppressWarnings("unused") View v) {
+                            TextView inputField = (TextView) activity.findViewById(inputFieldId);
+                            String text = inputField.getText().toString();
+                            if (text.length() > 0) {
+                                inputField.setText(text.subSequence(0, text.length() - 1));
+                            }
+                        }
+                    });
+                }
+            }
             if (child instanceof Button) {
+                if (digitOnly) {
+                    if (!isDigitKey(child.getId())) {
+                        ((Button) child).setText("");
+                    }
+                }
                 child.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(@SuppressWarnings("unused") View v) {
@@ -60,6 +86,15 @@ public class DigitKeyboard extends LinearLayout {
             }
         }
         return children;
+    }
+
+    private boolean isDigitKey(int id) {
+        for (int keyId:nonDigitKeys) {
+            if (id == keyId) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
