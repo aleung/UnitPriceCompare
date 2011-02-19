@@ -7,7 +7,6 @@
               android:text="@string/quantity" />
     <TextView android:id="@+id/ItemDialog_QuantityField" 
               android:layout_height="wrap_content" android:layout_width="match_parent"
-              android:singleLine="true"
               android:hint="@string/item_quantity_hint" 
               style="@style/Widget.EditText" />
 </LinearLayout>

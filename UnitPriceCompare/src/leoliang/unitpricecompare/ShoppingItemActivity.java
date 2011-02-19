@@ -101,7 +101,7 @@ public class ShoppingItemActivity extends BaseActivity {
 
         TabSpec tabSpecQuantity = tabs.newTabSpec(TAB_QUANTITY);
         View tabIndicatorQuantity = inflater.inflate(R.layout.quantity_tab, null);
-        tabIndicatorQuantity.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 5.0f));
+        tabIndicatorQuantity.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 6.0f));
         tabSpecQuantity.setIndicator(tabIndicatorQuantity);
         tabSpecQuantity.setContent(R.id.tabContent_quantity);
         tabs.addTab(tabSpecQuantity);
