@@ -53,9 +53,9 @@
                 android:text="00" />
         <Button android:id="@+id/key_point" style="@style/Widget.Button.Keyboard.Digit"
                 android:text="." />
-        <Button android:id="@+id/key_reserved" style="@style/Widget.Button.Keyboard"
-                android:text="" />
         <ImageButton android:id="@+id/key_back" style="@style/Widget.Button.Keyboard"
                 android:src="@drawable/sym_keyboard_delete" />
+        <ImageButton android:id="@+id/key_clear" style="@style/Widget.Button.Keyboard"
+                android:src="@drawable/sym_keyboard_clear" />
     </LinearLayout>
 </LinearLayout>

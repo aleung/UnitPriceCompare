@@ -53,6 +53,15 @@ public class DigitKeyboard extends LinearLayout {
                         }
                     });
                 }
+                if (child.getId() == R.id.key_clear) {
+                    child.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(@SuppressWarnings("unused") View v) {
+                            TextView inputField = (TextView) activity.findViewById(inputFieldId);
+                            inputField.setText("");
+                        }
+                    });
+                }
             }
             if (child instanceof Button) {
                 if (digitOnly) {
