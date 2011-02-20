@@ -4,12 +4,12 @@
     <string name="add_item">添加</string>
     <string name="help">使用说明</string>
     <string name="clear_all_items">清空</string>
-    <string name="uncomparable">无法比较</string>
+    <string name="uncomparable">单位类型不同</string>
     <string name="edit_item">修改</string>
     <string name="delete_item">删除</string>
     <string name="shopping_item">Shopping Item</string>
-    <string name="item_price_hint">价格, 如 19.9</string>
-    <string name="item_quantity_hint">数量, 如 550 或 150*3+100</string>
+    <string name="item_price_hint"></string>
+    <string name="item_quantity_hint"></string>
     <string name="invalid_input_price">输入的价格有误</string>
     <string name="invalid_input_quantity">输入的数量有误</string>
     <string name="invalid_input_unit">选择单位了吗？</string>

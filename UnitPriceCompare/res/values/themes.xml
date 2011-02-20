@@ -2,5 +2,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="MyTheme" parent="@android:style/Theme.Light">
         <item name="android:radioButtonStyle">@style/Widget.CompoundButton.RadioButton</item>
+        <item name="android:editTextStyle">@style/Widget.EditText</item>
     </style>
 </resources>

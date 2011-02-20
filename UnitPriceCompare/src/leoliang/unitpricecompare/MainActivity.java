@@ -9,6 +9,7 @@ import java.util.Map;
 import leoliang.unitpricecompare.model.PriceRanker;
 import leoliang.unitpricecompare.model.PriceRanker.UncomparableUnitException;
 import leoliang.unitpricecompare.model.ShoppingItem;
+import leoliang.util.Analytics;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,7 +44,7 @@ public class MainActivity extends BaseActivity {
 
     public class ItemList extends BaseAdapter {
 
-        private final String[] rankName = { "Best Buy", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th" };
+        private final String[] rankName = { "Best Price", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th" };
         private final LayoutInflater inflater;
         private List<ShoppingItem> items = new ArrayList<ShoppingItem>();
         private PriceRanker ranker = new PriceRanker();
@@ -62,13 +63,13 @@ public class MainActivity extends BaseActivity {
         public void clear() {
             Map<String, String> eventParameters = new HashMap<String, String>();
             eventParameters.put("numberOfItems", String.valueOf(getCount()));
-            FlurryAgent.onEvent("allItemsCleared", eventParameters);
+            Analytics.onEvent("allItemsCleared", eventParameters);
             items.clear();
             notifyItemUpdated();
         }
 
         public void deleteItem(int index) {
-            FlurryAgent.onEvent("itemDeleted");
+            Analytics.onEvent("itemDeleted");
             items.remove(index);
             notifyItemUpdated();
         }
@@ -90,7 +91,11 @@ public class MainActivity extends BaseActivity {
 
         @Override
         public View getView(final int i, View convertView, ViewGroup viewgroup) {
+
+            // TODO: use convertView to avoid inflate every time
             View view = inflater.inflate(R.layout.item_view, null);
+
+            // TODO: use ViewHolder to avoid findViewById every time
             TextView priceView = (TextView) view.findViewById(R.id.price);
             TextView unitPriceView = (TextView) view.findViewById(R.id.unitPrice);
             TextView rankView = (TextView) view.findViewById(R.id.rank);
@@ -131,6 +136,11 @@ public class MainActivity extends BaseActivity {
                 public void onCheckedChanged(@SuppressWarnings("unused") CompoundButton button, boolean isChecked) {
                     item.setEnabled(isChecked);
                     notifyItemUpdated();
+                    if (isChecked) {
+                        Analytics.onEvent("itemEnabled");
+                    } else {
+                        Analytics.onEvent("itemDisabled");
+                    }
                 }
             });
 
