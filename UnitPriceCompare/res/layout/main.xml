@@ -4,14 +4,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <ListView android:id="@+id/ShoppingItemList" 
-        android:layout_width="wrap_content"
-        android:layout_height="0dip"
-        android:layout_weight="1"/>     
-
     <Button android:id="@+id/AddItemButton" 
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
         android:drawableLeft="@android:drawable/ic_menu_add"
         android:text="@string/add_item" />
 
@@ -20,4 +16,10 @@
         android:layout_height="wrap_content"
         android:text="@string/add_items_hint" 
         android:gravity="center_horizontal"/>
+
+    <ListView android:id="@+id/ShoppingItemList" 
+        android:layout_width="wrap_content"
+        android:layout_height="0dip"
+        android:layout_weight="1"/>     
+
 </LinearLayout>

@@ -9,7 +9,7 @@
     <string name="delete_item">删除</string>
     <string name="shopping_item">Shopping Item</string>
     <string name="item_price_hint"></string>
-    <string name="item_quantity_hint"></string>
+    <string name="item_quantity_hint">例如 100 或 50*3</string>
     <string name="invalid_input_price">输入的价格有误</string>
     <string name="invalid_input_quantity">输入的数量有误</string>
     <string name="invalid_input_unit">选择单位了吗？</string>
