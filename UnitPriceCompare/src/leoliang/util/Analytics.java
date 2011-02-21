@@ -56,6 +56,7 @@ public class Analytics {
 
     public static void onStartSession(Context context) {
         Analytics.context = context;
+        FlurryAgent.setCaptureUncaughtExceptions(false);
         FlurryAgent.onStartSession(context, FLURRY_KEY);
     }
 
