@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="leoliang.unitpricecompare"
       android:versionCode="12"
-      android:versionName="0.11.1">
+      android:versionName="dev">
       
     <application 
         android:theme="@style/MyTheme" 
@@ -27,7 +27,7 @@
                   android:screenOrientation="portrait"/>
     </application>
 
-    <uses-sdk android:minSdkVersion="3" />
+    <uses-sdk android:minSdkVersion="4" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
