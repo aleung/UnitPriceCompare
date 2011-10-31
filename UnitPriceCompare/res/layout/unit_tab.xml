@@ -6,6 +6,6 @@
               android:textStyle="bold"
               android:text="@string/unit" />
     <TextView android:id="@+id/ItemDialog_UnitField" 
-              android:layout_height="wrap_content" android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:layout_width="fill_parent"
               style="@style/Widget.EditText" />
 </LinearLayout>
