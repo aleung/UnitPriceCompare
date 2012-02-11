@@ -31,8 +31,6 @@
     </style>
 
     <style name="Widget.EditText" parent="@android:style/Widget.EditText">
-        <item name="android:focusable">false</item>
-        <item name="android:focusableInTouchMode">false</item>
         <item name="android:clickable">false</item>
     </style>
 

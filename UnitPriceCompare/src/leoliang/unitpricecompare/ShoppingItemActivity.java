@@ -94,21 +94,21 @@ public class ShoppingItemActivity extends BaseActivity {
 
         TabSpec tabSpecPrice = tabs.newTabSpec(TAB_PRICE);
         View tabIndicatorPrice = inflater.inflate(R.layout.price_tab, null);
-        tabIndicatorPrice.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 3.0f));
+        tabIndicatorPrice.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.FILL_PARENT, 0.3f));
         tabSpecPrice.setIndicator(tabIndicatorPrice);
         tabSpecPrice.setContent(R.id.tabContent_price);
         tabs.addTab(tabSpecPrice);
 
         TabSpec tabSpecQuantity = tabs.newTabSpec(TAB_QUANTITY);
         View tabIndicatorQuantity = inflater.inflate(R.layout.quantity_tab, null);
-        tabIndicatorQuantity.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 6.0f));
+        tabIndicatorQuantity.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.FILL_PARENT, 0.5f));
         tabSpecQuantity.setIndicator(tabIndicatorQuantity);
         tabSpecQuantity.setContent(R.id.tabContent_quantity);
         tabs.addTab(tabSpecQuantity);
 
         TabSpec tabSpecUnit = tabs.newTabSpec(TAB_UNIT);
         View tabIndicatorUnit = inflater.inflate(R.layout.unit_tab, null);
-        tabIndicatorUnit.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 2.0f));
+        tabIndicatorUnit.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.FILL_PARENT, 0.2f));
         tabSpecUnit.setIndicator(tabIndicatorUnit);
         tabSpecUnit.setContent(R.id.tabContent_unit);
         tabs.addTab(tabSpecUnit);
