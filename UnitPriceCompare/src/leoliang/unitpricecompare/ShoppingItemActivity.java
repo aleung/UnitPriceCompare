@@ -16,8 +16,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.flurry.android.FlurryAgent;
-
 /**
  * UI for input shopping item information.
  */
@@ -126,7 +124,7 @@ public class ShoppingItemActivity extends BaseActivity {
 
         Map<String, String> eventParameters = new HashMap<String, String>();
         eventParameters.put("screenOrientation", String.valueOf(getResources().getConfiguration().orientation));
-        FlurryAgent.onEvent("openShoppingItemActivity", eventParameters);
+        //        FlurryAgent.onEvent("openShoppingItemActivity", eventParameters);
     }
 
     /**

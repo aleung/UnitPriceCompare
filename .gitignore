@@ -14,3 +14,7 @@
 # other SCM
 .hg
 .svn
+
+# Output
+bin
+dist

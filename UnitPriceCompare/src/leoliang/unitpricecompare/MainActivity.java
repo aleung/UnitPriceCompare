@@ -37,8 +37,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.flurry.android.FlurryAgent;
-
 public class MainActivity extends BaseActivity {
 
     public class ItemList extends BaseAdapter {
@@ -62,13 +60,13 @@ public class MainActivity extends BaseActivity {
         public void clear() {
             Map<String, String> eventParameters = new HashMap<String, String>();
             eventParameters.put("numberOfItems", String.valueOf(getCount()));
-            FlurryAgent.onEvent("allItemsCleared", eventParameters);
+            //            FlurryAgent.onEvent("allItemsCleared", eventParameters);
             items.clear();
             notifyItemUpdated();
         }
 
         public void deleteItem(int index) {
-            FlurryAgent.onEvent("itemDeleted");
+            //            FlurryAgent.onEvent("itemDeleted");
             items.remove(index);
             notifyItemUpdated();
         }
@@ -162,10 +160,10 @@ public class MainActivity extends BaseActivity {
             eventParameters.put("unitOfItem", item.getQuantity().getUnitName());
             eventParameters.put("numberOfItems", String.valueOf(getCount()));
             if (index < 0) {
-                FlurryAgent.onEvent("itemCreated", eventParameters);
+                //                FlurryAgent.onEvent("itemCreated", eventParameters);
                 items.add(item);
             } else {
-                FlurryAgent.onEvent("itemUpdated", eventParameters);
+                //                FlurryAgent.onEvent("itemUpdated", eventParameters);
                 items.set(index, item);
             }
             notifyItemUpdated();

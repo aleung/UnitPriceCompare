@@ -2,8 +2,6 @@ package leoliang.unitpricecompare;
 
 import android.app.Activity;
 
-import com.flurry.android.FlurryAgent;
-
 public class BaseActivity extends Activity {
 
     protected static final String LOG_TAG = "UnitPriceCompare";
@@ -11,13 +9,13 @@ public class BaseActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
-        FlurryAgent.onStartSession(this, "5Q82B7WVG6DAIHNFF649");
+        //        FlurryAgent.onStartSession(this, "5Q82B7WVG6DAIHNFF649");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        FlurryAgent.onEndSession(this);
+        //        FlurryAgent.onEndSession(this);
     }
 
 }
