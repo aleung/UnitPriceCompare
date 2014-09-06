@@ -56,7 +56,7 @@ public class Analytics {
 
     public static void onStartSession(Context context) {
         Analytics.context = context;
-        FlurryAgent.setCaptureUncaughtExceptions(false);
+        FlurryAgent.setContinueSessionMillis(60000);
         FlurryAgent.onStartSession(context, FLURRY_KEY);
     }
 

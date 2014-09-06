@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">比價易</string>
+    <string name="app_name">比价易</string>
     <string name="add_item">添加</string>
-    <string name="help">使用說明</string>
+    <string name="help">使用说明</string>
     <string name="clear_all_items">清空</string>
-    <string name="uncomparable">單位類型不同</string>
+    <string name="uncomparable">单位类型不同</string>
     <string name="edit_item">修改</string>
     <string name="delete_item">删除</string>
     <string name="shopping_item">Shopping Item</string>
     <string name="item_price_hint"></string>
     <string name="item_quantity_hint">例如 100 或 50*3</string>
-    <string name="invalid_input_price">錄入的價格有誤</string>
+    <string name="invalid_input_price">输入的价格有误</string>
     <string name="invalid_input_quantity">输入的数量有误</string>
-    <string name="invalid_input_unit">選擇單位了嗎？</string>
-    <string name="price">價格:</string>
-    <string name="quantity">數量:</string>
-    <string name="unit">單位:</string>
+    <string name="invalid_input_unit">选择单位了吗？</string>
+    <string name="price">价格:</string>
+    <string name="quantity">数量:</string>
+    <string name="unit">单位:</string>
     <string name="each_unit">件</string>
-    <string name="add_items_hint">添加至少兩件貨品，才能進行比較</string>
+    <string name="add_items_hint">加入至少两件货品，才能进行比较</string>
 </resources>

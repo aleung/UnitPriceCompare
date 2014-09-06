@@ -5,6 +5,9 @@
 # files for the dex VM
 *.dex
 
+# generated
+bin/
+
 # Java class files
 *.class
 
@@ -14,6 +17,9 @@
 # other SCM
 .hg
 .svn
+
+# Eclipse
+.settings/
 
 #---------------------
 # OSX
