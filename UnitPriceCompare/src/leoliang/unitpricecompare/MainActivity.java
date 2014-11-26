@@ -31,7 +31,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -46,9 +45,9 @@ public class MainActivity extends BaseActivity {
 
         private final String[] rankName = { "Best Price", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th" };
         private final LayoutInflater inflater;
-        private List<ShoppingItem> items = new ArrayList<ShoppingItem>();
-        private PriceRanker ranker = new PriceRanker();
-        private NumberFormat ratioNumberFormat;
+        private final List<ShoppingItem> items = new ArrayList<ShoppingItem>();
+        private final PriceRanker ranker = new PriceRanker();
+        private final NumberFormat ratioNumberFormat;
 
         public ItemList(Context context) {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -251,16 +250,6 @@ public class MainActivity extends BaseActivity {
         ListView listView = (ListView) findViewById(R.id.ShoppingItemList);
         listView.setAdapter(itemList);
         registerForContextMenu(listView);
-
-        Button addButton = (Button) findViewById(R.id.AddItemButton);
-        addButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(@SuppressWarnings("unused") View view) {
-                Intent intent = new Intent(getApplicationContext(), ShoppingItemActivity.class);
-                startActivityForResult(intent, ACTION_CREATE);
-            }
-
-        });
     }
 
     @Override
@@ -274,6 +263,9 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+        case R.id.AddItem:
+            addItem();
+            return true;
         case R.id.ClearAllItems:
             itemList.clear();
             return true;
@@ -323,6 +315,11 @@ public class MainActivity extends BaseActivity {
         } else {
             hideHint();
         }
+    }
+
+    private void addItem() {
+      Intent intent = new Intent(getApplicationContext(), ShoppingItemActivity.class);
+      startActivityForResult(intent, ACTION_CREATE);
     }
 
 }
